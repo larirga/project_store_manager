@@ -22,8 +22,15 @@ const idProduct = [
   ]
 ]
 
+const idProductModel =
+  {
+    id: 1,
+    name: "Martelo de Thor"
+  }
+
 
 module.exports = {
   allProducts,
   idProduct,
+  idProductModel,
 };

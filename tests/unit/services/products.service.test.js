@@ -24,6 +24,9 @@ describe('Testando Service de Products', function () {
   it('retorna invalido os produtos por um id inexistente', async function () {
     
     //arrange
+        sinon.stub(productsModel, 'getProductsId')
+          .resolves(undefined);
+    
     const invalidId = 9999;
     const statusCode = 404;
     // act
@@ -44,14 +47,14 @@ describe('Testando Service de Products', function () {
 
     //arrange
     sinon.stub(productsModel, 'getProductsId')
-          .resolves(mock.idProduct);
+          .resolves(mock.idProductModel);
 
     // act
-    const result = await productsModel.getProductsId();
+    const result = await productsService.getProductsId(1);
     // console.log(result)
 
     //assert
-    expect(result).to.be.deep.equal(mock.idProduct);
+    expect(result).to.be.deep.equal(mock.idProductModel);
 
     sinon.restore()
   })
