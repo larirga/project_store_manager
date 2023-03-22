@@ -13,7 +13,7 @@ const allProducts = [
   }
 ]
 
-const idProduct =[
+const idProduct = [
   [
     {
     id: 1,
@@ -21,6 +21,7 @@ const idProduct =[
     }
   ]
 ]
+
 
 module.exports = {
   allProducts,
