@@ -45,15 +45,15 @@ describe('Testando Controller de Products', function () {
   //   res.json = sinon.stub().returns();
 
   //   sinon.stub(productsService, 'getProducts')
-  //     .resolves(mock.idProduct);
+  //     .resolves(mock.idProductModel);
     
   //   // act
-  //   const result = await productsController.getProducts(req, res)
-  //   console.log(result);
+  //   const result = await productsController.getProductsId(req, res)
+  //   console.log(result)
 
   //   // assert 
   //   expect(res.status).to.have.been.calledWith(200);
-  //   expect(res.json).to.have.been.calledWith(mock.idProduct);
+  //   expect(res.json).to.have.been.calledWith(mock.idProductModel);
 
   //   sinon.restore()
   // })
