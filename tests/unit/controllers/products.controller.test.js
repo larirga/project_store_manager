@@ -33,29 +33,29 @@ describe('Testando Controller de Products', function () {
 
     sinon.restore()
   })
-  // it('retorna corretamente o produto pelo id', async function () {
+  it('retorna corretamente o produto pelo id', async function () {
 
-  //   //arrange
-  //   const req = {
-  //     params: { id: 1 },
-  //   };
-  //   const res = {};
+    //arrange
+    const req = {
+      params: { id: 1 },
+    };
+    const res = {};
 
-  //   res.status = sinon.stub().returns(res);
-  //   res.json = sinon.stub().returns();
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
 
-  //   sinon.stub(productsService, 'getProducts')
-  //     .resolves(mock.idProductModel);
+    sinon.stub(productsService, 'getProductsId')
+      .resolves(mock.idProductModel);
     
-  //   // act
-  //   const result = await productsController.getProductsId(req, res)
-  //   console.log(result)
+    // act
+    const result = await productsController.getProductsId(req, res)
+    console.log(result)
 
-  //   // assert 
-  //   expect(res.status).to.have.been.calledWith(200);
-  //   expect(res.json).to.have.been.calledWith(mock.idProductModel);
+    // assert 
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(mock.idProductModel);
 
-  //   sinon.restore()
-  // })
+    sinon.restore()
+  })
 
 });

@@ -22,8 +22,13 @@ const getProductsId = async (req, res, next) => {
 const createProducts = async (req, res) => {
   const { name } = req.body;
   const { type, message } = await productsServices.insert(name);
-  if (type) {
-    return res.status(404).json({ message });
+
+  if (type === 'INVALID_NAME') {
+    return res.status(400).json({ message });
+  }
+
+  if (type === 'INVALID_LENGTH') {
+    return res.status(422).json({ message });
   }
   return res.status(201).json(message);
 };
