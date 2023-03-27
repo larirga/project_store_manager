@@ -3,7 +3,7 @@ const Joi = require('joi');
 const idSchema = Joi.number().integer().min(1).required();
 
 const addProductSchema = Joi.object({
-  name: Joi.string().min(3).required(),
+  name: Joi.string().required(),
 });
 
 const saleSchema = Joi.object({
@@ -11,7 +11,7 @@ const saleSchema = Joi.object({
   quantity: Joi.number().min(1).required().label('quantity'),
 }).messages({
   'any.required': '{{#label}} is required',
-  'any.min': '{{#label}} must be greater than or equal to {{#limit}}',
+  'string.min': '{{#label}} must be greater than or equal to {{#limit}}',
 });
 
 module.exports = {

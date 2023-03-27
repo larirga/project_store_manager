@@ -26,6 +26,23 @@ const insert = async (name) => {
   return { type: null, message: newProducts };
 };
 
+const updateProducts = async (id, name) => {
+  const error = await validationsInputValues.validateNewProduct(name);
+
+  if (error.type) return error;
+
+  const product = await productsModel.getProductsId(id);
+
+  if (!product) {
+        throw httpErrGenerator(404, 'Product not found');
+  }
+
+  await productsModel.updateProducts(id, name);
+  const newProduct = { message: { id, name } };
+
+  return newProduct;
+};
+
 const deleteProducts = async (id) => {
   const product = await productsModel.getProductsId(id);
   if (!product) {
@@ -39,4 +56,5 @@ module.exports = {
   getProductsId,
   insert,
   deleteProducts,
+  updateProducts,
 };

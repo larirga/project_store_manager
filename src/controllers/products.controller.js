@@ -33,6 +33,24 @@ const createProducts = async (req, res) => {
   return res.status(201).json(message);
 };
 
+const updateProducts = async (req, res, next) => {
+  try {
+  const { name } = req.body;
+  const { id } = req.params;
+  const { type, message } = await productsServices.updateProducts(id, name);
+  if (type === 'INVALID_NAME') {
+    return res.status(400).json({ message });
+  }
+
+  if (type === 'INVALID_LENGTH') {
+    return res.status(422).json({ message });
+  }
+  return res.status(200).json(message);
+  } catch (e) {
+    next(e);
+  }
+};
+
 const deleteProducts = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -48,4 +66,5 @@ module.exports = {
   getProductsId,
   createProducts,
   deleteProducts,
+  updateProducts,
 };
